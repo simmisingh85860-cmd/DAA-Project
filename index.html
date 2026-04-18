@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>India Map — BFS & DFS Traversal</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>🗺️ India City Map</h1>
+    <p class="subtitle">BFS &amp; DFS Graph Traversal — Distance &amp; Travel Time</p>
+  </div>
+  <span class="cpp-badge">⚙️ C++ BFS / DFS Logic</span>
+</header>
+
+<div class="controls">
+  <div class="ctrl-item">
+    <label>Start City</label>
+    <select id="startNode"></select>
+  </div>
+  <div class="ctrl-item">
+    <label>End City</label>
+    <select id="endNode"></select>
+  </div>
+  <div class="ctrl-item">
+    <label>Speed: <span id="speedLabel">600ms</span></label>
+    <input type="range" id="speed" min="100" max="1500" value="600" step="100"/>
+  </div>
+  <div class="ctrl-buttons">
+    <button id="btnBFS" class="btn bfs">▶ BFS</button>
+    <button id="btnDFS" class="btn dfs">▶ DFS</button>
+    <button id="btnReset" class="btn reset">↺ Reset</button>
+  </div>
+</div>
+
+<div class="legend-bar">
+  <span><span class="dot d-unvisited"></span> Unvisited</span>
+  <span><span class="dot d-start"></span> Start</span>
+  <span><span class="dot d-end"></span> End</span>
+  <span><span class="dot d-current"></span> Current</span>
+  <span><span class="dot d-bfs"></span> BFS Visited</span>
+  <span><span class="dot d-dfs"></span> DFS Visited</span>
+  <span><span class="dot d-path"></span> Final Path</span>
+</div>
+
+<div class="main-layout">
+
+  <!-- MAP -->
+  <div class="map-wrap">
+    <div id="mapContainer"></div>
+    <!-- Path info card -->
+    <div id="pathInfoBox" class="path-info-box" style="display:none"></div>
+  </div>
+
+  <!-- SIDE PANEL -->
+  <div class="side-panel">
+
+    <div class="traversal-log">
+      <div class="log-header">
+        <span>Traversal Order</span>
+        <span id="logType" class="log-badge"></span>
+      </div>
+      <div id="logSteps" class="log-steps">
+        <p class="log-placeholder">Select cities and run BFS or DFS</p>
+      </div>
+    </div>
+
+    <div class="stats-row" id="statsRow" style="display:none">
+      <div class="stat"><span id="statVisited">0</span><small>Visited</small></div>
+      <div class="stat"><span id="statTotal">0</span><small>Total</small></div>
+      <div class="stat"><span id="statEdges">0</span><small>Edges</small></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="algorithms.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
